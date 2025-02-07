@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruits and Vegetables Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <img src="C:\ABHAY\Fruits & Vegetables Website\Logo\vflogo.png" alt="Shop Logo" id="logo">
+        <h1 align="center">Fruits <br>&<br>Vegetables Shop</h1>
+        <nav>
+            <ul>
+                <li><a href="#vegetables-section">Vegetables</a></li>
+                <li><a href="#fruits-section">Fruits</a></li>
+                <li><a href="#cart-section">Cart</a></li>
+                <li><a href="#offers-section">Offers & Discounts</a></li>
+                <li><a href="#blog-recipe-section">Recipes & Blog</a></li>
+                <li><a href="#faq-section">FAQ</a></li>
+                <li><a href="#admin-section">Admin Panel</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<div id="searchBarContainer">
+<!-- Search Input -->
+    <input type="text" id="searchBar" placeholder="Search for Fruits & Vegetables .........." oninput="showSuggestions(this.value)" />
+
+    <!-- Filter Section -->
+    <div id="filters">
+        <label for="category">Category:</label>
+        <select id="category">
+            <option value="all">All</option>
+            <option value="fruit">Fruit</option>
+            <option value="vegetable">Vegetable</option>
+            <option value="root">Root Vegetables</option>
+            <option value="leafy">Leafy Greens</option>
+            <option value="citrus">Citrus Fruits</option>
+        </select>
+
+        <label for="availability">Availability:</label>
+        <select id="availability">
+            <option value="all">All</option>
+            <option value="available">In Stock</option>
+            <option value="out_of_stock">Out of Stock</option>
+        </select>
+
+        <label for="minPrice">Min Price:</label>
+        <input type="number" id="minPrice" placeholder="Min" />
+        
+        <label for="maxPrice">Max Price:</label>
+        <input type="number" id="maxPrice" placeholder="Max" />
+
+        <label for="minRating">Min Rating:</label>
+        <input type="number" id="minRating" placeholder="1" min="1" max="5" />
+
+        <!-- Sorting Options -->
+        <label for="sortBy">Sort By:</label>
+        <select id="sortBy">
+            <option value="default">Default</option>
+            <option value="priceAsc">Price: Low to High</option>
+            <option value="priceDesc">Price: High to Low</option>
+            <option value="ratingDesc">Rating: High to Low</option>
+            <option value="popularity">Popularity</option>
+        </select>
+    </div>
+
+    <!-- Search Button -->
+    <button onclick="filterItems()">Search</button>
+
+    <!-- Autocomplete Suggestions -->
+    <div id="suggestions" style="display: none;"></div>
+</div>
+
+    <!-- Vegetables and Fruits Section -->
+    <section id="vegetables-section">
+        <h2>Vegetables</h2>
+        <div id="vegetables" class="item-container"></div>
+    </section>
+
+    <section id="fruits-section">
+        <h2>Fruits</h2>
+        <div id="fruits" class="item-container"></div>
+	<div id="fruitsSection"></div>
+    </section>
+
+    <!-- Best Sellers Section -->
+    <section id="best-sellers">
+        <h2>Best Sellers</h2>
+        <div class="item-container" id="bestSellerItems"></div>
+    </section>
+
+    <!-- Offers Section -->
+    <section id="offers-section">
+        <h2>Special Offers & Discounts</h2>
+        <div class="offer-item">Buy 1 Get 1 Free on Apples!</div>
+        <div class="offer-item">20% off on Leafy Vegetables</div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="featured-products">
+        <h2>Featured Products</h2>
+        <div class="item-container" id="featuredItems"></div>
+    </section>
+
+    <!-- Cart Section -->
+    <section id="cart-section">
+        <h2>Shopping Cart</h2>
+        <div id="cart"></div>
+        <h3>Total Quantity: <span id="totalQuantity">0</span></h3>
+        <h3>Total Price: ₹<span id="totalPrice">0</span></h3>
+        <button id="checkoutButton">Checkout</button>
+    </section>
+
+    <!-- Checkout Modal -->
+    <section id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Checkout</h2>
+            <p>Select a payment method:</p>
+            <button id="gpayButton">Google Pay</button>
+            <button id="paytmButton">Paytm</button>
+            <button id="phonepeButton">PhonePe</button>
+            <div id="payment-confirmation" style="margin-top: 20px;"></div>
+        </div>
+    </section>
+
+<!-- Blog and Recipe Suggestions -->
+<section id="blog-recipe-section">
+       <h2>Blog and Recipe Suggestions</h2>
+
+       <!-- Blog Post 1 -->
+        <div class="post-item">
+            <h3>The Benefits of Fresh Vegetables</h3>
+            <p>Fresh vegetables provide essential vitamins, minerals, and fiber, which contribute to a healthy diet and help reduce the risk of chronic diseases.<br>
+            Adding them to your meals can boost both flavor and health benefits...</p>
+            <button onclick="openModal('blogModal1')">Read More</button>
+        </div>
+
+        <!-- Blog Post 2 -->
+        <div class="post-item">
+            <h3>How to Choose the Best Seasonal Produce</h3>
+            <p>Seasonal produce not only tastes better but is also more nutritious. Learn how to pick the freshest fruits and vegetables based on the season ,<br>
+            to enjoy better flavor and quality in your meals...</p>
+            <button onclick="openModal('blogModal2')">Read More</button>
+        </div>
+
+        <!-- Blog Post 3 -->
+        <div class="post-item">
+            <h3>Healthy Cooking Tips for a Balanced Diet</h3>
+            <p>Cooking healthy meals doesn’t have to be complicated. By incorporating fresh vegetables, whole grains, and lean proteins, you can create a balanced meals<br>
+            that are both nutritious and delicious...</p>
+            <button onclick="openModal('blogModal3')">Read More</button>
+        </div>
+	    <!-- Recipe Section -->
+    <div class="recipes-section">
+        <!-- Recipe Card 1 -->
+        <div class="recipe-card">
+            <img src="C:/ABHAY/Fruits & Vegetables Website/Recipe/Mixed Fruit Recipe.jpg" alt="Mixed Fruit Recipe">
+            <h3>Mixed Fruit Recipe</h3>
+            <p><b>Ingredients:</b> Fresh orange juice, lemon juice, brown sugar, honey (optional), watermelon, pineapple, strawberries...</p>
+            <button onclick="openModal('recipe1Modal')">Read More</button>
+        </div>
+
+        <!-- Recipe Card 2 -->
+        <div class="recipe-card">
+            <img src="C:/ABHAY/Fruits & Vegetables Website/Recipe/Aloo Matar Recipe.jpg" alt="Aloo Matar Recipe">
+            <h3>Aloo Matar Recipe</h3>
+            <p><b>Ingredients:</b> Potatoes, green peas, onions, tomatoes, spices...</p>
+            <button onclick="openModal('recipe2Modal')">Read More</button>
+        </div>
+
+        <!-- Recipe Card 3 -->
+        <div class="recipe-card">
+            <img src="C:\ABHAY\Fruits & Vegetables Website\Recipe\Bhindi Masala Recipe.jpg" alt="Bhindi Masala Recipe">
+            <h3>Bhindi Masala Recipe</h3>
+            <p><b>Ingredients:</b>...</p>
+            <button onclick="openModal('recipe3Modal')">Read More</button>
+        </div>
+
+        <!-- Recipe Card 4 -->
+        <div class="recipe-card">
+            <img src="C:\ABHAY\Fruits & Vegetables Website\Recipe\Vegetable Pulao Recipe.jpg"" alt="Vegetable Pulao Recipe">
+            <h3>Vegetable Pulao Recipe</h3>
+            <p><b>Ingredients:</b> ...</p>
+            <button onclick="openModal('recipe4Modal')">Read More</button>
+        </div>
+    </div>
+</section>
+
+    <!-- Modals -->
+
+    <!-- Blog Modal 1 -->
+    <div id="blogModal1" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('blogModal1')">&times;</button>
+            <h3>The Benefits of Fresh Vegetables</h3>
+            <p>Fresh vegetables are a great source of essential nutrients. From leafy greens to root vegetables, adding them to your daily diet can help lower blood pressure, reduce the risk of heart disease, and improve digestion.</p>
+        </div>
+    </div>
+
+    <!-- Blog Modal 2 -->
+    <div id="blogModal2" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('blogModal2')">&times;</button>
+            <h3>How to Choose the Best Seasonal Produce</h3>
+            <p>Seasonal produce is more likely to be at its peak freshness, flavor, and nutritional value. Some of the best seasonal choices include berries in summer, root vegetables in autumn, and citrus fruits in winter.</p>
+        </div>
+    </div>
+
+    <!-- Blog Modal 3 -->
+    <div id="blogModal3" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('blogModal3')">&times;</button>
+            <h3>Healthy Cooking Tips for a Balanced Diet</h3>
+            <p>To create balanced meals, focus on including a variety of food groups: fruits, vegetables, lean proteins, and whole grains. Try steaming vegetables, grilling lean meats, or making soups with plenty of fresh herbs and spices for a healthy meal.</p>
+        </div>
+    </div>
+
+    <!-- Recipe Modals -->
+    <div id="recipe1Modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('recipe1Modal')">&times;</button>
+            <img src="C:\ABHAY\Fruits & Vegetables Website\Recipe\Mixed Fruit Recipe.jpg" alt="Mixed-Fruit-Recipe">
+            <h3>Mixed Fruit Recipe</h3>
+            <p><b>Instructions:</b><br> 
+            Take a large bowl, combine all the diced fruits, which is given below.<br>
+            Drizzle honey & lemon juice over the fruit (optional for extra flavor).<br>
+            Gently toss the fruit to coat with the honey-lemon mixture.<br>
+            Chill in the refrigerator for 30 minutes before serving.<br>
+            <b>Enjoy this refreshing and nutritious fruit salad!</b></p>
+        </div>
+    </div>
+
+    <div id="recipe2Modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('recipe2Modal')">&times;</button>
+            <img src="C:\ABHAY\Fruits & Vegetables Website\Recipe\Aloo Matar Recipe.jpg" alt="Aloo-Matar-Recipe">
+            <h3>Aloo Matar Recipe</h3>
+            <p></p>
+        </div>
+    </div>
+
+    <div id="recipe3Modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('recipe3Modal')">&times;</button>
+            <img src="C:\ABHAY\Fruits & Vegetables Website\Recipe\Bhindi Masala Recipe.jpg" alt="Bhindi-Masala-Recipe">
+            <h3>Bhindi Masala Recipe</h3>
+            <p>Season with herbs like thyme and parsley for a comforting meal during cold weather.</p>
+        </div>
+    </div>
+
+    <div id="recipe4Modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('recipe4Modal')">&times;</button>
+            <img src="C:\ABHAY\Fruits & Vegetables Website\Recipe\Vegetable Pulao Recipe.jpg" alt="Vegetable-Pulao-Recipe">
+            <h3>Vegetable Pulao Recipe</h3>
+            <p> </p>
+        </div>
+    </div>
+</section>
+
+    <!-- Reviews Section -->
+    <section id="reviews-section">
+        <h2>Customer Reviews</h2>
+        <div id="reviews-container"></div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <details>
+            <summary>How to keep fruits and vegetables fresh?</summary>
+            <p>To keep fruits and vegetables fresh, store them in <b>cool, dry places</b>. Refrigerate items like berries, leafy greens, & herbs in <b>airtight containers</b>.<br>
+            For root vegetables like potatoes and onions, keep them in a dark, cool spot outside the fridge.<br>
+            Washing produce before storing can speed up spoilage, so it’s best to wash them just before use.</p>
+        </details>
+        <details>
+            <summary>Which is healthier. a fruit or a vegetable? Why?</summary>
+            <p><b>Both fruits and vegetables are healthy</b>, but their benefits differ slightly.<br>
+            Fruits are rich in natural sugars, vitamins, and antioxidants, while vegetables are typically lower in sugar and higher in fiber, vitamins, & minerals.<br>
+            <b>Both offer essential nutrients</b>, but vegetables tend to have fewer calories & can be more nutrient-dense, making them slightly healthier for maintaining a balanced diet.</p>
+        </details>
+        <details>
+            <summary>What are the delivery charges?</summary>
+            <p>Delivery charges is <b>free</b> upto orders till ₹250. After that it may contain <b>5%</b> to <b>10%</b> delivery charges.</p>
+        </details>
+        <details>
+            <summary>Are there any other hidden charges?</summary>
+            <p> There are <b>No hidden charges</b> as well. Infact, our deliveries come in cotton fabric bags / cotton mesh bags which are totally hygienic and free of cost.</p>
+        </details>
+        <details>
+            <summary>What are the payment methods?</summary>
+            <p>We accept Google Pay, Paytm, and PhonePe. Cash on delivery option is still <b>might be not available</b>.<br>
+            We request our customers to go through the purchase order and the bill thoroughly before paying our delivery boys.</p>
+        </details>
+        <details>
+            <summary>Where I can raise complain?</summary>
+            <p>In case you have any issue or complain regarding our delivery or quality, you can directly write us on <b>fruit&vegetableshop01@gmail.com</b>.</p>
+        </details>
+        <details>
+            <summary>What if I am not satisfied with the quality of the fruits & vegetables delivered to me?</summary>
+            <p> Despite our best efforts if you don’t get assured with the quality of our produce we offer immediate replacement of those products<br>
+            because our goal is a satisfied customer. Please read our <b>terms and conditions</b> for more information on replacements.</p>
+        </details>
+        <details>
+            <summary>Will the vegetables & fruits be fresh? How do you assure quality?</summary>
+            <p><b>Quality</b> is our mandate. We never compromise on quality.
+            Vegetables and fruits are purchased from the mandi after you place your order with us.<br>
+            After the purchase, the products are sorted, graded, weighed, hygienically packed, and then delivered to your home.<br>
+            We do not deliver <b>stale products</b> from storage. We assure quality of each and every item we deliver.</p>
+        </details>
+    </section>
+
+    <!-- Admin Section -->
+    <section id="admin-section">
+        <h2>Admin Panel - Add New Item</h2>
+        <form id="adminPanel">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="indianName" placeholder="Indian Name" required>
+            <input type="text" id="type" placeholder="Type (Leafy, Root, Soft, etc.)" required>
+            <input type="text" id="nutrition" placeholder="Nutritional Info" required>
+            <input type="text" id="price" placeholder="Price (per kg/gram)" required>
+            <input type="file" id="image" accept="image/*" required>
+            <button type="submit">Add Item</button>
+        </form>
+    </section>
+
+    <!-- External JS file -->
+    <script src="script.js"></script>
+</body>
+
+</html>

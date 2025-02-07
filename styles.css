@@ -1,0 +1,412 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Header and Navigation */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #28a745;
+    padding: 17px 18px;
+    color: white;
+}
+
+#logo {
+    width: 150px;
+    height: auto;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 8px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ddd;
+}
+
+/* Search Bar & Filters */
+#searchBarContainer {
+    margin: 20px auto;
+    padding: 12px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    max-width: 1200px;
+}
+
+#searchBar {
+    width: 80%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#searchButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#searchButton:hover {
+    background-color: #45a049;
+}
+
+/* Filters Section */
+#filters {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+#filters label,
+#filters select,
+#filters input {
+    margin: 5px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Suggestions */
+#suggestions {
+    background-color: white;
+    border: 1px solid #ccc;
+    position: absolute;
+    z-index: 1000;
+    width: 95%;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+#suggestions div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#suggestions div:hover {
+    background-color: #ddd;
+}
+
+/* Sections */
+section {
+    margin: 10px auto;
+    padding: 10px;
+    width: 95%;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Item Containers */
+#vegetables, 
+#fruits, 
+.item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.item-container div {
+    background-color: white;
+    padding: 15px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    width: 200px;
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item-container div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.item-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Cart */
+#cart {
+    margin-top: 24px;
+    border: 4px solid #ccc;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+#cart div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/* Offers */
+.offer-item {
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 18px;
+    width: 81%;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#blog-recipe-section {
+        padding: 18px;
+}
+    
+.blog-posts, .recipes-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+}
+
+    .post-item {
+        border: 3px solid #ddd;
+        border-radius: 8px;
+        padding: 12px;
+        width: 97%;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .recipe-card {
+        border: 3px solid #ddd;
+        border-radius: 8px;
+        padding: 12px;
+        width: 45%;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .post-item h3, .recipe-card h3 {
+        font-size: 1.5em;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .post-item p, .recipe-card p {
+        color: #666;
+        font-size: 1em;
+    }
+
+    .recipe-card img {
+        width: 100%;
+        border-radius: 8px 8px 0 0;
+        margin-bottom: 10px;
+    }
+
+    .modal-content img {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+/* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 12px;
+            border-radius: 6px;
+            width: 95%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .modal h3 {
+            margin-top: 0;
+        }
+
+        .modal img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+
+        .close-btn:hover {
+            background-color: #45a049;
+        }
+
+/* Admin Panel */
+#admin-section {
+    margin-top: 30px;
+}
+
+#adminPanel input {
+    display: block;
+    margin: 10px auto;
+    padding: 12px;
+    width: 90%;
+    max-width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#adminPanel button {
+    width: 120px;
+    display: block;
+    margin: 10px auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
+/* Responsive Design for Search Bar */
+@media (max-width: 768px) {
+    #searchBarContainer {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+    }
+
+    #searchBar {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #searchButton {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+/* Responsive Design For Recipe */
+        @media screen and (max-width: 768px) {
+            .recipes-carousel {
+                flex-direction: column;
+            }
+
+            nav a {
+                display: block;
+                padding: 10px;
+            }
+        }
